@@ -1,0 +1,9 @@
+# Frontend (Terminal 1)
+cd frontend
+yarn install
+yarn start
+
+# Backend (Terminal 2) 
+cd backend
+pip install -r requirements.txt
+uvicorn server:app --host 0.0.0.0 --port 8001 --reload
