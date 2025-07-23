@@ -8,8 +8,8 @@ export const portfolioData = {
     email: "pratiksahu3009@gmail.com",
     phone: "+91 98616 59231",
     location: "Hyderabad, IN",
-    linkedin: "https://www.linkedin.com/in/pratiksahu04/",
-    github: "https://github.com/Pratiksahu04",
+    linkedin: "linkedin.com/in/pratiksahu04/",
+    github: "github.com/Pratiksahu04",
   },
 
   skills: {
