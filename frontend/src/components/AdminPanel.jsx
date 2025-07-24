@@ -432,7 +432,7 @@ const AdminPanel = () => {
             </div>
           </TabsContent>
 
-          {/* Other tabs would be implemented similarly */}
+          {/* Experience Tab */}
           <TabsContent value="experience">
             <Card>
               <CardHeader>
@@ -444,46 +444,432 @@ const AdminPanel = () => {
             </Card>
           </TabsContent>
 
+          {/* Education Tab */}
           <TabsContent value="education">
             <Card>
               <CardHeader>
                 <CardTitle>Education</CardTitle>
               </CardHeader>
               <CardContent>
-                <p className="text-muted-foreground">Education editor coming soon...</p>
+                <div className="space-y-6">
+                  {portfolioData.education.map((edu, index) => (
+                    <Card key={index} className="bg-gray-900/80">
+                      <CardHeader>
+                        <CardTitle>
+                          {edu.degree || "Degree"} @ {edu.institution || "Institution"}
+                        </CardTitle>
+                      </CardHeader>
+                      <CardContent className="space-y-4">
+                        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                          <div>
+                            <Label>Degree/Program</Label>
+                            <Input
+                              value={edu.degree}
+                              onChange={e => {
+                                const value = e.target.value;
+                                setPortfolioData(prev => ({
+                                  ...prev,
+                                  education: prev.education.map((item, i) =>
+                                    i === index ? { ...item, degree: value } : item
+                                  )
+                                }));
+                              }}
+                              placeholder="e.g., Bachelor of Technology"
+                            />
+                          </div>
+                          <div>
+                            <Label>Institution</Label>
+                            <Input
+                              value={edu.institution}
+                              onChange={e => {
+                                const value = e.target.value;
+                                setPortfolioData(prev => ({
+                                  ...prev,
+                                  education: prev.education.map((item, i) =>
+                                    i === index ? { ...item, institution: value } : item
+                                  )
+                                }));
+                              }}
+                              placeholder="University/College name"
+                            />
+                          </div>
+                          <div>
+                            <Label>Duration</Label>
+                            <Input
+                              value={edu.duration}
+                              onChange={e => {
+                                const value = e.target.value;
+                                setPortfolioData(prev => ({
+                                  ...prev,
+                                  education: prev.education.map((item, i) =>
+                                    i === index ? { ...item, duration: value } : item
+                                  )
+                                }));
+                              }}
+                              placeholder="e.g., 2019-2023"
+                            />
+                          </div>
+                          <div>
+                            <Label>Score/Grade</Label>
+                            <Input
+                              value={edu.score}
+                              onChange={e => {
+                                const value = e.target.value;
+                                setPortfolioData(prev => ({
+                                  ...prev,
+                                  education: prev.education.map((item, i) =>
+                                    i === index ? { ...item, score: value } : item
+                                  )
+                                }));
+                              }}
+                              placeholder="e.g., CGPA: 3.8/4.0"
+                            />
+                          </div>
+                        </div>
+                        <Button
+                          variant="destructive"
+                          size="sm"
+                          onClick={() => {
+                            setPortfolioData(prev => ({
+                              ...prev,
+                              education: prev.education.filter((_, i) => i !== index)
+                            }));
+                          }}
+                        >
+                          <Trash2 size={16} /> Remove Education
+                        </Button>
+                      </CardContent>
+                    </Card>
+                  ))}
+                  <Button
+                    onClick={() => {
+                      setPortfolioData(prev => ({
+                        ...prev,
+                        education: [
+                          ...prev.education,
+                          {
+                            degree: "",
+                            institution: "",
+                            duration: "",
+                            score: ""
+                          }
+                        ]
+                      }));
+                    }}
+                    className="bg-blue-600 hover:bg-blue-700"
+                  >
+                    <Plus size={16} className="mr-1" />
+                    Add Education
+                  </Button>
+                </div>
               </CardContent>
             </Card>
           </TabsContent>
 
+          {/* Certifications Tab */}
           <TabsContent value="certifications">
             <Card>
               <CardHeader>
                 <CardTitle>Certifications</CardTitle>
               </CardHeader>
               <CardContent>
-                <p className="text-muted-foreground">Certifications editor coming soon...</p>
+                <div className="space-y-6">
+                  {portfolioData.certifications.map((cert, index) => (
+                    <Card key={index} className="bg-gray-900/80">
+                      <CardHeader>
+                        <CardTitle>
+                          {cert.name || "Certification"} {cert.issuer ? `by ${cert.issuer}` : ""}
+                        </CardTitle>
+                      </CardHeader>
+                      <CardContent className="space-y-4">
+                        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                          <div>
+                            <Label>Certification Name</Label>
+                            <Input
+                              value={cert.name}
+                              onChange={e => {
+                                const value = e.target.value;
+                                setPortfolioData(prev => ({
+                                  ...prev,
+                                  certifications: prev.certifications.map((item, i) =>
+                                    i === index ? { ...item, name: value } : item
+                                  )
+                                }));
+                              }}
+                              placeholder="e.g., AWS Certified Solutions Architect"
+                            />
+                          </div>
+                          <div>
+                            <Label>Issuer</Label>
+                            <Input
+                              value={cert.issuer}
+                              onChange={e => {
+                                const value = e.target.value;
+                                setPortfolioData(prev => ({
+                                  ...prev,
+                                  certifications: prev.certifications.map((item, i) =>
+                                    i === index ? { ...item, issuer: value } : item
+                                  )
+                                }));
+                              }}
+                              placeholder="e.g., Amazon Web Services"
+                            />
+                          </div>
+                          <div>
+                            <Label>Date</Label>
+                            <Input
+                              type="date"
+                              value={cert.date}
+                              onChange={e => {
+                                const value = e.target.value;
+                                setPortfolioData(prev => ({
+                                  ...prev,
+                                  certifications: prev.certifications.map((item, i) =>
+                                    i === index ? { ...item, date: value } : item
+                                  )
+                                }));
+                              }}
+                              placeholder="YYYY-MM-DD"
+                            />
+                          </div>
+                          <div>
+                            <Label>Credential URL</Label>
+                            <Input
+                              value={cert.url}
+                              onChange={e => {
+                                const value = e.target.value;
+                                setPortfolioData(prev => ({
+                                  ...prev,
+                                  certifications: prev.certifications.map((item, i) =>
+                                    i === index ? { ...item, url: value } : item
+                                  )
+                                }));
+                              }}
+                              placeholder="Link to certificate"
+                            />
+                          </div>
+                        </div>
+                        <Button
+                          variant="destructive"
+                          size="sm"
+                          onClick={() => {
+                            setPortfolioData(prev => ({
+                              ...prev,
+                              certifications: prev.certifications.filter((_, i) => i !== index)
+                            }));
+                          }}
+                        >
+                          <Trash2 size={16} /> Remove Certification
+                        </Button>
+                      </CardContent>
+                    </Card>
+                  ))}
+                  <Button
+                    onClick={() => {
+                      setPortfolioData(prev => ({
+                        ...prev,
+                        certifications: [
+                          ...prev.certifications,
+                          {
+                            name: "",
+                            issuer: "",
+                            date: "",
+                            url: ""
+                          }
+                        ]
+                      }));
+                    }}
+                    className="bg-blue-600 hover:bg-blue-700"
+                  >
+                    <Plus size={16} className="mr-1" />
+                    Add Certification
+                  </Button>
+                </div>
               </CardContent>
             </Card>
           </TabsContent>
 
+          {/* Achievements Tab */}
           <TabsContent value="achievements">
             <Card>
               <CardHeader>
                 <CardTitle>Achievements</CardTitle>
               </CardHeader>
               <CardContent>
-                <p className="text-muted-foreground">Achievements editor coming soon...</p>
+                <div className="space-y-6">
+                  {portfolioData.achievements.map((achievement, index) => (
+                    <Card key={index} className="bg-gray-900/80">
+                      <CardContent className="space-y-4 pt-6">
+                        <div className="grid grid-cols-1 gap-4">
+                          <div>
+                            <Label>Achievement Title</Label>
+                            <Input
+                              value={achievement.title}
+                              onChange={e => {
+                                const value = e.target.value;
+                                setPortfolioData(prev => ({
+                                  ...prev,
+                                  achievements: prev.achievements.map((item, i) =>
+                                    i === index ? { ...item, title: value } : item
+                                  )
+                                }));
+                              }}
+                              placeholder="e.g., First Place in Hackathon"
+                            />
+                          </div>
+                          <div>
+                            <Label>Description</Label>
+                            <Textarea
+                              value={achievement.description}
+                              onChange={e => {
+                                const value = e.target.value;
+                                setPortfolioData(prev => ({
+                                  ...prev,
+                                  achievements: prev.achievements.map((item, i) =>
+                                    i === index ? { ...item, description: value } : item
+                                  )
+                                }));
+                              }}
+                              placeholder="Describe your achievement"
+                              rows={3}
+                            />
+                          </div>
+                          <div>
+                            <Label>Date/Year</Label>
+                            <Input
+                              value={achievement.date}
+                              onChange={e => {
+                                const value = e.target.value;
+                                setPortfolioData(prev => ({
+                                  ...prev,
+                                  achievements: prev.achievements.map((item, i) =>
+                                    i === index ? { ...item, date: value } : item
+                                  )
+                                }));
+                              }}
+                              placeholder="e.g., 2023"
+                            />
+                          </div>
+                        </div>
+                        <Button
+                          variant="destructive"
+                          size="sm"
+                          onClick={() => {
+                            setPortfolioData(prev => ({
+                              ...prev,
+                              achievements: prev.achievements.filter((_, i) => i !== index)
+                            }));
+                          }}
+                        >
+                          <Trash2 size={16} /> Remove Achievement
+                        </Button>
+                      </CardContent>
+                    </Card>
+                  ))}
+                  <Button
+                    onClick={() => {
+                      setPortfolioData(prev => ({
+                        ...prev,
+                        achievements: [
+                          ...prev.achievements,
+                          {
+                            title: "",
+                            description: "",
+                            date: ""
+                          }
+                        ]
+                      }));
+                    }}
+                    className="bg-blue-600 hover:bg-blue-700"
+                  >
+                    <Plus size={16} className="mr-1" />
+                    Add Achievement
+                  </Button>
+                </div>
               </CardContent>
             </Card>
           </TabsContent>
 
+          {/* Hobbies Tab */}
           <TabsContent value="hobbies">
             <Card>
               <CardHeader>
                 <CardTitle>Hobbies & Interests</CardTitle>
               </CardHeader>
               <CardContent>
-                <p className="text-muted-foreground">Hobbies editor coming soon...</p>
+                <div className="space-y-6">
+                  {portfolioData.hobbies.map((hobby, index) => (
+                    <Card key={index} className="bg-gray-900/80">
+                      <CardContent className="space-y-4 pt-6">
+                        <div className="grid grid-cols-1 gap-4">
+                          <div>
+                            <Label>Hobby/Interest</Label>
+                            <Input
+                              value={hobby.name}
+                              onChange={e => {
+                                const value = e.target.value;
+                                setPortfolioData(prev => ({
+                                  ...prev,
+                                  hobbies: prev.hobbies.map((item, i) =>
+                                    i === index ? { ...item, name: value } : item
+                                  )
+                                }));
+                              }}
+                              placeholder="e.g., Photography"
+                            />
+                          </div>
+                          <div>
+                            <Label>Description</Label>
+                            <Textarea
+                              value={hobby.description}
+                              onChange={e => {
+                                const value = e.target.value;
+                                setPortfolioData(prev => ({
+                                  ...prev,
+                                  hobbies: prev.hobbies.map((item, i) =>
+                                    i === index ? { ...item, description: value } : item
+                                  )
+                                }));
+                              }}
+                              placeholder="Describe your hobby or interest"
+                              rows={3}
+                            />
+                          </div>
+                        </div>
+                        <Button
+                          variant="destructive"
+                          size="sm"
+                          onClick={() => {
+                            setPortfolioData(prev => ({
+                              ...prev,
+                              hobbies: prev.hobbies.filter((_, i) => i !== index)
+                            }));
+                          }}
+                        >
+                          <Trash2 size={16} /> Remove Hobby
+                        </Button>
+                      </CardContent>
+                    </Card>
+                  ))}
+                  <Button
+                    onClick={() => {
+                      setPortfolioData(prev => ({
+                        ...prev,
+                        hobbies: [
+                          ...prev.hobbies,
+                          {
+                            name: "",
+                            description: ""
+                          }
+                        ]
+                      }));
+                    }}
+                    className="bg-blue-600 hover:bg-blue-700"
+                  >
+                    <Plus size={16} className="mr-1" />
+                    Add Hobby
+                  </Button>
+                </div>
               </CardContent>
             </Card>
           </TabsContent>
