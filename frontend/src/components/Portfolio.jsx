@@ -93,12 +93,58 @@ const Portfolio = () => {
               </div>
             </div>
             
-            <div className="relative">
-              <div className="w-80 h-80 mx-auto bg-gradient-to-br from-light-pink/20 to-mid-purple/20 rounded-full flex items-center justify-center">
-                <div className="w-64 h-64 bg-gradient-to-br from-mid-blue/30 to-light-pink/30 rounded-full flex items-center justify-center">
-                  <div className="text-6xl">🎯</div>
+            <div className="relative overflow-hidden">
+              <FadeIn>
+                <div className="w-[800px] h-[600px] mx-auto relative"> {/* Increased from 600x500 */}
+                  <div className="absolute inset-0 flex items-center justify-center">
+                    <div className="w-full h-full flex flex-col items-center justify-center">
+                      <div className="text-2xl font-mono text-light-pink mb-12">Data Pipeline</div> {/* Increased from text-lg and mb-8 */}
+                      
+                      <div className="relative h-48 flex items-center justify-center"> {/* Increased from h-32 */}
+                        {/* Raw Data Stage */}
+                        <div className="absolute w-48 h-48 bg-mid-blue/20 rounded-xl border-2 border-mid-blue flex items-center justify-center animate-data-stage-1"> {/* Increased from w-24 h-24 */}
+                          <div className="grid grid-cols-2 gap-4"> {/* Increased from gap-2 */}
+                            <div className="w-8 h-8 bg-mid-blue/40 rounded animate-pulse"></div> {/* Increased from w-4 h-4 */}
+                            <div className="w-8 h-8 bg-mid-blue/40 rounded animate-pulse-delay-1"></div>
+                            <div className="w-8 h-8 bg-mid-blue/40 rounded animate-pulse-delay-2"></div>
+                            <div className="w-8 h-8 bg-mid-blue/40 rounded animate-pulse-delay-3"></div>
+                          </div>
+                          <span className="absolute -bottom-12 text-base text-mid-blue">Raw Data</span> {/* Increased from -bottom-8 and text-sm */}
+                        </div>
+
+                        {/* Cleaning Stage */}
+                        <div className="absolute w-48 h-48 bg-light-pink/20 rounded-xl border-2 border-light-pink flex items-center justify-center animate-data-stage-2 opacity-0">
+                          <div className="h-24 w-24 border-4 border-light-pink rounded-full animate-spin border-t-transparent"></div> {/* Increased from h-12 w-12 border-3 */}
+                          <span className="absolute -bottom-12 text-base text-light-pink">Cleaning</span>
+                        </div>
+
+                        {/* Processing Stage */}
+                        <div className="absolute w-48 h-48 bg-mid-purple/20 rounded-xl border-2 border-mid-purple flex items-center justify-center animate-data-stage-3 opacity-0">
+                          <div className="flex flex-col gap-4"> {/* Increased from gap-2 */}
+                            <div className="h-4 w-32 bg-mid-purple/40 rounded-full animate-grow"></div> {/* Increased from h-2 w-16 */}
+                            <div className="h-4 w-24 bg-mid-purple/40 rounded-full animate-grow-delay-1"></div>
+                            <div className="h-4 w-28 bg-mid-purple/40 rounded-full animate-grow-delay-2"></div>
+                          </div>
+                          <span className="absolute -bottom-12 text-base text-mid-purple">Processing</span>
+                        </div>
+
+                        {/* Model Stage */}
+                        <div className="absolute w-48 h-48 bg-gradient-to-br from-light-pink/20 to-mid-purple/20 rounded-xl border-2 border-light-pink/30 flex items-center justify-center animate-data-stage-4 opacity-0">
+                          <div className="grid grid-cols-2 gap-4"> {/* Increased from gap-2 */}
+                            <div className="h-6 w-6 bg-light-pink/50 rounded-full animate-pulse"></div>
+                            <div className="h-6 w-6 bg-mid-purple/50 rounded-full animate-pulse-delay-1"></div>
+                            <div className="h-6 w-6 bg-mid-blue/50 rounded-full animate-pulse-delay-2"></div>
+                            <div className="h-6 w-6 bg-light-pink/50 rounded-full animate-pulse-delay-3"></div>
+                          </div>
+                          <div className="absolute inset-0 rounded-xl border-2 border-white/10 animate-spin"></div>
+                          <div className="absolute w-full h-full rounded-xl bg-black/20 backdrop-blur-sm"></div>
+                          <span className="absolute -bottom-12 text-base text-light-pink">Model</span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
                 </div>
-              </div>
+              </FadeIn>
             </div>
           </div>
         </AnimatedSection>
