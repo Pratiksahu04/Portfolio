@@ -76,7 +76,7 @@ const ProjectCard = ({ project }) => {
           variant="outline"
           size="sm"
           className="flex items-center gap-2 bg-transparent border-current hover:bg-black/10 transition-all duration-200"
-          onClick={() => window.open(project.github, '_blank')}
+          onClick={() => window.open(`https://${project.github}`, '_blank')}
         >
           <Github size={16} />
           Code
@@ -85,7 +85,7 @@ const ProjectCard = ({ project }) => {
           variant="outline"
           size="sm"
           className="flex items-center gap-2 bg-transparent border-current hover:bg-black/10 transition-all duration-200"
-          onClick={() => window.open(project.demo, '_blank')}
+          onClick={() => window.open(`https://${project.demo}`, '_blank')}
         >
           <ExternalLink size={16} />
           Demo
