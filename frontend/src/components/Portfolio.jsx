@@ -9,6 +9,7 @@ import { Card, CardContent } from './ui/card';
 import { Badge } from './ui/badge';
 import { Mail, Phone, MapPin, Linkedin, Github, ExternalLink, Award, Calendar, Building, GraduationCap } from 'lucide-react';
 import * as LucideIcons from 'lucide-react';
+import { AnimatedSection, FadeIn, FadeInStagger } from './AnimatedSection';
 
 const Portfolio = () => {
   const [portfolioData, setPortfolioData] = useState(initialData);
@@ -54,24 +55,24 @@ const Portfolio = () => {
       
       {/* Hero Section */}
       <section id="about" className="min-h-screen flex items-center justify-center px-4 lg:px-8 pt-16">
-        <div className="container mx-auto">
+        <AnimatedSection className="container mx-auto">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-            <div className="space-y-6">
-              <div className="space-y-4">
-                <h1 className="font-display text-6xl lg:text-8xl font-bold uppercase leading-none text-white">
-                  {personal.name.split(' ')[0]}
-                  <br />
-                  <span className="text-light-pink">{personal.name.split(' ')[1] || ''}</span>
-                </h1>
-                <h2 className="text-2xl lg:text-3xl text-mid-grey font-normal">
-                  {personal.title}
-                </h2>
-                <p className="text-xl text-light-pink opacity-80">
-                  {personal.tagline}
-                </p>
-              </div>
-              
-              <p className="text-lg text-white/80 leading-relaxed max-w-lg">
+              <div className="space-y-6">
+                <FadeIn>
+                  <div className="space-y-4">
+                    <h1 className="font-display text-6xl lg:text-8xl font-bold uppercase leading-none text-white">
+                      {personal.name.split(' ')[0]}
+                      <br />
+                      <span className="text-light-pink">{personal.name.split(' ')[1] || ''}</span>
+                    </h1>
+                    <h2 className="text-2xl lg:text-3xl text-mid-grey font-normal">
+                      {personal.title}
+                    </h2>
+                    <p className="text-xl text-light-pink opacity-80">
+                      {personal.tagline}
+                    </p>
+                  </div>
+                </FadeIn>              <p className="text-lg text-white/80 leading-relaxed max-w-lg">
                 {personal.bio}
               </p>
 
@@ -100,127 +101,145 @@ const Portfolio = () => {
               </div>
             </div>
           </div>
-        </div>
+        </AnimatedSection>
       </section>
 
       {/* Projects Section */}
       <section id="projects" className="py-24 px-4 lg:px-8 bg-white/5">
-        <div className="container mx-auto">
+        <AnimatedSection className="container mx-auto">
           <div className="text-center mb-16">
-            <h2 className="text-4xl lg:text-6xl font-display font-bold uppercase text-white mb-4">
-              Featured Projects
-            </h2>
-            <p className="text-xl text-mid-grey max-w-3xl mx-auto">
-              Showcasing data science projects that demonstrate my expertise in machine learning, analytics, and problem-solving
-            </p>
+            <FadeIn>
+              <h2 className="text-4xl lg:text-6xl font-display font-bold uppercase text-white mb-4">
+                Featured Projects
+              </h2>
+              <p className="text-xl text-mid-grey max-w-3xl mx-auto">
+                Showcasing data science projects that demonstrate my expertise in machine learning, analytics, and problem-solving
+              </p>
+            </FadeIn>
           </div>
           
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            {projects.map((project) => (
-              <ProjectCard key={project.id} project={project} />
-            ))}
-          </div>
-        </div>
+          <FadeInStagger>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+              {projects.map((project) => (
+                <FadeIn key={project.id}>
+                  <ProjectCard key={project.id} project={project} />
+                </FadeIn>
+              ))}
+            </div>
+          </FadeInStagger>
+        </AnimatedSection>
       </section>
 
       {/* Skills Section */}
       <section id="skills" className="py-24 px-4 lg:px-8">
-        <div className="container mx-auto">
+        <AnimatedSection className="container mx-auto">
           <div className="text-center mb-16">
-            <h2 className="text-4xl lg:text-6xl font-display font-bold uppercase text-white mb-4">
-              Technical Skills
-            </h2>
-            <p className="text-xl text-mid-grey">
-              Comprehensive toolkit for data science and machine learning
-            </p>
+            <FadeIn>
+              <h2 className="text-4xl lg:text-6xl font-display font-bold uppercase text-white mb-4">
+                Technical Skills
+              </h2>
+              <p className="text-xl text-mid-grey">
+                Comprehensive toolkit for data science and machine learning
+              </p>
+            </FadeIn>
           </div>
 
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+          <FadeInStagger>
+            <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
             {/* Programming Languages */}
-            <Card className="bg-mid-blue/20 border-mid-blue/30">
-              <CardContent className="p-6">
-                <h3 className="text-xl font-mono uppercase tracking-wider text-white mb-4">
-                  Programming
-                </h3>
-                <div className="space-y-4">
-                  {skills.programming.map((skill) => (
-                    <div key={skill.name} className="space-y-2">
-                      <div className="flex justify-between">
-                        <span className="text-light-pink">{skill.name}</span>
-                        <span className="text-mid-grey">{skill.level}%</span>
+            <FadeIn>
+              <Card className="bg-mid-blue/20 border-mid-blue/30">
+                <CardContent className="p-6">
+                  <h3 className="text-xl font-mono uppercase tracking-wider text-white mb-4">
+                    Programming
+                  </h3>
+                  <div className="space-y-4">
+                    {skills.programming.map((skill) => (
+                      <div key={skill.name} className="space-y-2">
+                        <div className="flex justify-between">
+                          <span className="text-light-pink">{skill.name}</span>
+                          <span className="text-mid-grey">{skill.level}%</span>
+                        </div>
+                        <div className="w-full bg-black/30 rounded-full h-2">
+                          <div 
+                            className="bg-mid-blue h-2 rounded-full transition-all duration-1000"
+                            style={{ width: `${skill.level}%` }}
+                          />
+                        </div>
                       </div>
-                      <div className="w-full bg-black/30 rounded-full h-2">
-                        <div 
-                          className="bg-mid-blue h-2 rounded-full transition-all duration-1000"
-                          style={{ width: `${skill.level}%` }}
-                        />
-                      </div>
-                    </div>
-                  ))}
-                </div>
-              </CardContent>
-            </Card>
+                    ))}
+                  </div>
+                </CardContent>
+              </Card>
+            </FadeIn>
 
             {/* Data Science */}
-            <Card className="bg-light-pink/20 border-light-pink/30">
-              <CardContent className="p-6">
-                <h3 className="text-xl font-mono uppercase tracking-wider text-white mb-4">
-                  Data Science
-                </h3>
-                <div className="space-y-4">
-                  {skills.dataScience.map((skill) => (
-                    <div key={skill.name} className="space-y-2">
-                      <div className="flex justify-between">
-                        <span className="text-light-pink">{skill.name}</span>
-                        <span className="text-mid-grey">{skill.level}%</span>
+            <FadeIn>
+              <Card className="bg-light-pink/20 border-light-pink/30">
+                <CardContent className="p-6">
+                  <h3 className="text-xl font-mono uppercase tracking-wider text-white mb-4">
+                    Data Science
+                  </h3>
+                  <div className="space-y-4">
+                    {skills.dataScience.map((skill) => (
+                      <div key={skill.name} className="space-y-2">
+                        <div className="flex justify-between">
+                          <span className="text-light-pink">{skill.name}</span>
+                          <span className="text-mid-grey">{skill.level}%</span>
+                        </div>
+                        <div className="w-full bg-black/30 rounded-full h-2">
+                          <div 
+                            className="bg-light-pink h-2 rounded-full transition-all duration-1000"
+                            style={{ width: `${skill.level}%` }}
+                          />
+                        </div>
                       </div>
-                      <div className="w-full bg-black/30 rounded-full h-2">
-                        <div 
-                          className="bg-light-pink h-2 rounded-full transition-all duration-1000"
-                          style={{ width: `${skill.level}%` }}
-                        />
-                      </div>
-                    </div>
-                  ))}
-                </div>
-              </CardContent>
-            </Card>
+                    ))}
+                  </div>
+                </CardContent>
+              </Card>
+            </FadeIn>
 
             {/* Tools & Technologies */}
-            <Card className="bg-mid-purple/20 border-mid-purple/30">
-              <CardContent className="p-6">
-                <h3 className="text-xl font-mono uppercase tracking-wider text-white mb-4">
-                  Tools & Frameworks
-                </h3>
-                <div className="space-y-4">
-                  {skills.tools.map((skill) => (
-                    <div key={skill.name} className="space-y-2">
-                      <div className="flex justify-between">
-                        <span className="text-light-pink">{skill.name}</span>
-                        <span className="text-mid-grey">{skill.level}%</span>
+            <FadeIn>
+              <Card className="bg-mid-purple/20 border-mid-purple/30">
+                <CardContent className="p-6">
+                  <h3 className="text-xl font-mono uppercase tracking-wider text-white mb-4">
+                    Tools & Frameworks
+                  </h3>
+                  <div className="space-y-4">
+                    {skills.tools.map((skill) => (
+                      <div key={skill.name} className="space-y-2">
+                        <div className="flex justify-between">
+                          <span className="text-light-pink">{skill.name}</span>
+                          <span className="text-mid-grey">{skill.level}%</span>
+                        </div>
+                        <div className="w-full bg-black/30 rounded-full h-2">
+                          <div 
+                            className="bg-mid-purple h-2 rounded-full transition-all duration-1000"
+                            style={{ width: `${skill.level}%` }}
+                          />
+                        </div>
                       </div>
-                      <div className="w-full bg-black/30 rounded-full h-2">
-                        <div 
-                          className="bg-mid-purple h-2 rounded-full transition-all duration-1000"
-                          style={{ width: `${skill.level}%` }}
-                        />
-                      </div>
-                    </div>
-                  ))}
-                </div>
-              </CardContent>
-            </Card>
+                    ))}
+                  </div>
+                </CardContent>
+              </Card>
+            </FadeIn>
           </div>
-        </div>
+          </FadeInStagger>
+        </AnimatedSection>
       </section>
 
       {/* Experience & Education Section */}
       <section id="experience" className="py-24 px-4 lg:px-8 bg-white/5">
-        <div className="container mx-auto">
+        <AnimatedSection className="container mx-auto">
           <div className="text-center mb-16">
-            <h2 className="text-4xl lg:text-6xl font-display font-bold uppercase text-white mb-4">
-              Experience & Education
-            </h2>
+            <FadeIn>
+              <h2 className="text-4xl lg:text-6xl font-display font-bold uppercase text-white mb-4">
+                Experience & Education
+              </h2>
+            </FadeIn>
           </div>
 
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
@@ -231,65 +250,75 @@ const Portfolio = () => {
                 Experience
               </h3>
               <div className="space-y-8">
-                {experience.map((exp) => (
-                  <Card key={exp.id} className="bg-black/50 border-grey/20">
-                    <CardContent className="p-6">
-                      <div className="flex justify-between items-start mb-2">
-                        <h4 className="text-xl text-white font-medium">{exp.position}</h4>
-                        <Badge variant="outline" className="border-light-pink text-light-pink">
-                          {exp.type}
-                        </Badge>
-                      </div>
-                      <p className="text-light-pink mb-1">{exp.company}</p>
-                      <p className="text-mid-grey text-sm mb-4">{exp.duration} • {exp.location}</p>
-                      <p className="text-white/80 mb-4">{exp.description}</p>
-                      <ul className="space-y-2">
-                        {exp.achievements.map((achievement, index) => (
-                          <li key={index} className="text-sm text-mid-grey flex items-start gap-2">
-                            <span className="w-1.5 h-1.5 bg-light-pink rounded-full mt-2 flex-shrink-0" />
-                            {achievement}
-                          </li>
-                        ))}
-                      </ul>
-                    </CardContent>
-                  </Card>
-                ))}
+                <FadeInStagger>
+                  {experience.map((exp) => (
+                    <FadeIn key={exp.id}>
+                      <Card className="bg-black/50 border-grey/20">
+                        <CardContent className="p-6">
+                          <div className="flex justify-between items-start mb-2">
+                            <h4 className="text-xl text-white font-medium">{exp.position}</h4>
+                            <Badge variant="outline" className="border-light-pink text-light-pink">
+                              {exp.type}
+                            </Badge>
+                          </div>
+                          <p className="text-light-pink mb-1">{exp.company}</p>
+                          <p className="text-mid-grey text-sm mb-4">{exp.duration} • {exp.location}</p>
+                          <p className="text-white/80 mb-4">{exp.description}</p>
+                          <ul className="space-y-2">
+                            {exp.achievements.map((achievement, index) => (
+                              <li key={index} className="text-sm text-mid-grey flex items-start gap-2">
+                                <span className="w-1.5 h-1.5 bg-light-pink rounded-full mt-2 flex-shrink-0" />
+                                {achievement}
+                              </li>
+                            ))}
+                          </ul>
+                        </CardContent>
+                      </Card>
+                    </FadeIn>
+                  ))}
+                </FadeInStagger>
               </div>
             </div>
 
             {/* Education */}
             <div>
-              <h3 className="text-2xl font-mono uppercase tracking-wider text-light-pink mb-8 flex items-center gap-2">
-                <GraduationCap size={24} />
-                Education
-              </h3>
+              <FadeIn>
+                <h3 className="text-2xl font-mono uppercase tracking-wider text-light-pink mb-8 flex items-center gap-2">
+                  <GraduationCap size={24} />
+                  Education
+                </h3>
+              </FadeIn>
               <div className="space-y-8">
-                {education.map((edu) => (
-                  <Card key={edu.id} className="bg-black/50 border-grey/20">
-                    <CardContent className="p-6">
-                      <h4 className="text-xl text-white font-medium mb-1">{edu.degree}</h4>
-                      <p className="text-light-pink mb-1">{edu.school}</p>
-                      <p className="text-mid-grey text-sm mb-2">{edu.duration} • {edu.location}</p>
-                      <p className="text-white/80 text-sm mb-4">GPA: {edu.gpa}</p>
-                      <div>
-                        <p className="text-sm font-mono uppercase tracking-wider text-mid-grey mb-2">
-                          Relevant Coursework:
-                        </p>
-                        <div className="flex flex-wrap gap-2">
-                          {edu.coursework.map((course, index) => (
-                            <Badge key={index} variant="secondary" className="bg-grey/20 text-white text-xs">
-                              {course}
-                            </Badge>
-                          ))}
-                        </div>
-                      </div>
-                    </CardContent>
-                  </Card>
-                ))}
+                <FadeInStagger>
+                  {education.map((edu) => (
+                    <FadeIn key={edu.id}>
+                      <Card key={edu.id} className="bg-black/50 border-grey/20">
+                        <CardContent className="p-6">
+                          <h4 className="text-xl text-white font-medium mb-1">{edu.degree}</h4>
+                          <p className="text-light-pink mb-1">{edu.school}</p>
+                          <p className="text-mid-grey text-sm mb-2">{edu.duration} • {edu.location}</p>
+                          <p className="text-white/80 text-sm mb-4">CGPA: {edu.cgpa}</p>
+                          <div>
+                            <p className="text-sm font-mono uppercase tracking-wider text-mid-grey mb-2">
+                              Relevant Coursework:
+                            </p>
+                            <div className="flex flex-wrap gap-2">
+                              {edu.coursework.map((course, index) => (
+                                <Badge key={index} variant="secondary" className="bg-grey/20 text-white text-xs">
+                                  {course}
+                                </Badge>
+                              ))}
+                            </div>
+                          </div>
+                        </CardContent>
+                      </Card>
+                    </FadeIn>
+                  ))}
+                </FadeInStagger>
               </div>
             </div>
           </div>
-        </div>
+        </AnimatedSection>
       </section>
 
       {/* Import and render remaining sections */}
