@@ -48,7 +48,7 @@ export const portfolioData = {
       bgColor: "Orange",
       github: "github.com/Pratiksahu04/Facial-Emotion-Recognition",
       //demo: "alexchen.dev/churn-demo",
-      highlights: ["94% accuracy", "Feature engineering", "Business impact analysis"]
+      highlights: ["High accuracy", "Real-time emotion detection", "CNN architecture"]
     }
     /*{
       id: 2,
@@ -106,7 +106,7 @@ export const portfolioData = {
     {
       id: 1,
       degree: "Bachelor of Science in Data Science",
-      school: "Roots Degree College",
+      school: "Roots Degree College (Affiliated to Osmania University)",
       duration: "2022 - 2025",
       cgpa: "8.4",
       location: "Hyderabad, IN",
@@ -139,7 +139,8 @@ export const portfolioData = {
       issuer: "Oracle",
       date: "July 2025",
       credentialId: "321078512OCI25GAIOCP",
-      description: "Certification in Oracle Cloud Infrastructure with a focus on Generative AI technologies."
+      description: "Certification in Oracle Cloud Infrastructure with a focus on Generative AI technologies.",
+      url: "https://catalog-education.oracle.com/ords/certview/sharebadge?id=4A91581B54930BA3CFA626F7C9C9DF437B5A70A433F5ABD998554DEC28E8C911"
     },
     {
       id: 2,
@@ -147,7 +148,8 @@ export const portfolioData = {
       issuer: "Oracle",
       date: "July 2025",
       credentialId: "321078512OCI25AICFA",
-      description: "Certification in foundational AI concepts and Oracle Cloud Infrastructure services."
+      description: "Certification in foundational AI concepts and Oracle Cloud Infrastructure services.",
+      url: "https://catalog-education.oracle.com/ords/certview/sharebadge?id=3BCD5889D365630864D02E36F4D8BBD32F8FA17245B6E9538FF30AB686B1EA8D"
     },
     {
       id: 3,
@@ -155,7 +157,8 @@ export const portfolioData = {
       issuer: "IBM",
       date: "May 2025",
       credentialId: "Z6UZNMIJ4X6S",
-      description: "Certification in data visualization techniques using Excel and IBM Cognos Analytics."
+      description: "Certification in data visualization techniques using Excel and IBM Cognos Analytics.",
+      url: "https://coursera.org/share/6de7665848a6eb198311be68157ffaf4"
     }
   ],
 
