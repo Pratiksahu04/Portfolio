@@ -3,9 +3,6 @@ from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
 from typing import List, Dict, Any
 import logging
-import smtplib
-from email.mime.text import MIMEText
-from email.mime.multipart import MIMEMultipart
 
 # Create the main app
 app = FastAPI(title="Portfolio Backend", version="1.0.0")
@@ -47,12 +44,6 @@ async def root():
 async def health_check():
     return {"status": "healthy", "database": "not_required"}
 
-@api_router.post("/contact")
-async def submit_contact(contact: ContactMessage):
-    # In a real app, you'd send an email here
-    # For now, just return success
-    print(f"Contact form submitted by {contact.name}: {contact.message}")
-    return {"message": "Thank you for your message! I'll get back to you soon."}
 
 @api_router.get("/portfolio")
 async def get_portfolio():
